@@ -1,0 +1,13 @@
+bell off # turn off visual bell
+defutf8 on
+defc1 off
+defencoding utf8
+
+bind b encoding big5 utf8 # Ctrl-a b 轉 Big5
+bind u encoding utf8 utf8 # Ctrl-a u 轉 UTF-8
+
+termcapinfo xterm ti@:te@
+
+caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+
+hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "
