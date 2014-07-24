@@ -87,6 +87,7 @@ Bundle 'myusuf3/numbers.vim'
 Bundle 'junegunn/seoul256.vim'
 Bundle 'xenomachina/vim-holodark'
 Bundle 'sickill/vim-monokai'
+Bundle 'nanotech/jellybeans.vim'
 
 filetype plugin indent on
 
@@ -94,13 +95,14 @@ syntax on
 filetype on
 filetype plugin on
 
-colorscheme easonvim
+colorscheme blackboard
 "set guifont=Source\ Code\ Pro\ 13
 
 " File encoding
+set lazyredraw
 set encoding=utf-8
 set fileencoding=utf-8
-set fencs=utf-8,cp950,big5,euc-jp,gbk,euc-kr,utf-bom
+set fencs=utf-8,cp950,big5,euc-jp,gbk,euc-kr,utf-bom,gb2312,gb18030,cp936,latin1
 set termencoding=utf-8
 set ambiwidth=double
 set hlsearch "highlight the search keyword you type
@@ -123,7 +125,7 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 autocmd FileType python set autoindent expandtab sta shiftwidth=4 softtabstop=4 tabstop=4 textwidth=119 omnifunc=pythoncomplete#Complete foldmethod=indent
-autocmd FileType python colorscheme easonvim
+autocmd FileType python colorscheme jellybeans
 
 autocmd Filetype cpp,c set noreadonly autoindent smartindent smarttab noexpandtab tabstop=4 textwidth=119 shiftwidth=4 omnifunc=cppcomplete#Complete foldmethod=syntax formatoptions=tcqlron cinoptions=:0,l1,t0,g0
 autocmd Filetype cpp,c set noreadonly autoindent smartindent smarttab noexpandtab tabstop=4 textwidth=119 shiftwidth=4 omnifunc=cppcomplete#Complete foldmethod=syntax formatoptions=tcqlron cinoptions=:0,l1,t0,g0
@@ -135,11 +137,11 @@ autocmd FileType java set autoindent expandtab sta shiftwidth=4 softtabstop=4 ta
 " Java Autocomplete after dot .
 autocmd FileType java inoremap <buffer> . .<C-X><C-O><C-P>
 autocmd FileType java colorscheme seoul256
-" autocmd Filetype java setlocal omnifunc=javacomplete#Complete completefunc=javacomplete#CompleteParamsInfo
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 autocmd BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
@@ -149,6 +151,8 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Close location list automatically after select
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
+" Remap to close location list by press shortcut 'q'
+autocmd FileType qf nnoremap <buffer> <silent> q :lcl<cr>
 
 " autocmd for fugitive
 autocmd User fugitive if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' | nnoremap <buffer> .. :edit %:h<CR> | endif
@@ -258,7 +262,7 @@ let g:miniBufExplorerMoreThanOne = 0
 let g:miniBufExplTabWrap = 1
 let g:miniBufExplMaxSize = 5
 let g:miniBufExplUseSingleClick = 1
-let g:minibufexplSoryBy = "name"
+" let g:minibufexplSoryBy = "name"
 
 " NERDTree
 let g:NERDTreeWinPos = "right"
